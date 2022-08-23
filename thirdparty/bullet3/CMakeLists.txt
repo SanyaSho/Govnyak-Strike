@@ -10,7 +10,15 @@ FILE (STRINGS "VERSION" BULLET_VERSION)
 SET(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 #kisak-strike changes:
-add_definitions(-fpic)
+if (NOT MSVC)
+	add_definitions(-fpic)
+else()
+	# @ssrobins at gitlab.kitware.com
+    add_compile_options(
+        $<$<CONFIG:>:/MT> #---------|
+        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+        $<$<CONFIG:Release>:/MT>) #--|
+endif()
 if( LINUX )
 	add_definitions(-DLINUX -D_LINUX -DPOSIX -DCOMPILER_GCC -DBASE -DNDEBUG -DGNUC)
 endif()
@@ -114,7 +122,7 @@ IF(MSVC)
 	ENDIF (NOT USE_MSVC_RUNTIME_LIBRARY_DLL)
 
 	IF (CMAKE_CL_64)
-	  ADD_DEFINITIONS(-D_WIN64)
+	  ADD_DEFINITIONS(-D_WIN64 -DCOMPILER_MSVC -DCOMPILER_MSVC64)
 	ELSE()
 	  OPTION(USE_MSVC_SSE "Use MSVC /arch:sse option"	OFF)
 	  option(USE_MSVC_SSE2 "Compile your program with SSE2 instructions" ON)
