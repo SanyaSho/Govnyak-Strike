@@ -42,10 +42,12 @@ set(ZLIB_INCLUDE_DIR "../zlib-1.2.8")
 #set(ZLIB_LIBRARY "../zlib-1.2.8")
 
 # @ssrobins at gitlab.kitware.com
+if(MSVC)
 add_compile_options(
     $<$<CONFIG:>:/MT> #---------|
     $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
     $<$<CONFIG:Release>:/MT>) #--|
+endif()
 
 # needed packages
 #find_package(ZLIB REQUIRED)

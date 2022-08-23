@@ -86,10 +86,12 @@ configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
 
 # @ssrobins at gitlab.kitware.com
+if(MSVC)
 add_compile_options(
     $<$<CONFIG:>:/MT> #---------|
     $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
     $<$<CONFIG:Release>:/MT>) #--|
+endif()
 
 #============================================================================
 # zlib

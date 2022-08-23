@@ -20,10 +20,12 @@ if (NOT CMAKE_CONFIGURATION_TYPES AND
 endif()
 
 # @ssrobins at gitlab.kitware.com
+if( MSVC )
 add_compile_options(
     $<$<CONFIG:>:/MT> #---------|
     $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
     $<$<CONFIG:Release>:/MT>) #--|
+endif()
 
 #Kisak-strike specific options
 if(UNIX AND NOT APPLE AND NOT WIN32)

@@ -14,10 +14,12 @@ if(UNIX AND NOT APPLE)
 endif()
 
 # @ssrobins at gitlab.kitware.com
+if(MSVC)
 add_compile_options(
     $<$<CONFIG:>:/MT> #---------|
     $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
     $<$<CONFIG:Release>:/MT>) #--|
+endif()
 
 if(protobuf_VERBOSE)
   message(STATUS "Protocol Buffers Configuring...")
