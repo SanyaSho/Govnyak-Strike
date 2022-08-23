@@ -65,7 +65,7 @@ target_sources(${OUTBINNAME} PRIVATE "cmatpaintmaps.cpp")
 target_sources(${OUTBINNAME} PRIVATE "cmatrendercontext.cpp")
 target_sources(${OUTBINNAME} PRIVATE "cmatqueuedrendercontext.cpp")
 
-target_link_libraries(${OUTBINNAME} bitmap_client mathlib_client shaderlib_client tier2_client tier3_client vtf_client libvstdlib_client)
+target_link_libraries(${OUTBINNAME} bitmap_client mathlib_client shaderlib_client tier2_client tier3_client vtf_client vstdlib_client)
 
 #if building as dll..
 #$Implib togl [!$IS_LIB_PROJECT && $GL && !$DEDICATED]

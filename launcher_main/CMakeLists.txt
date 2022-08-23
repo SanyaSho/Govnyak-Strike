@@ -5,9 +5,6 @@
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
 #dont build this on dedicated build
-if( DEDICATED )
-    return()
-endif()
 project(launcher_main)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
@@ -15,9 +12,9 @@ set(OUTBINDIR "${SRCDIR}/../game")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 
-if( WIN32 )
+if( WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
     set(OUTBINNAME "csgo")
-elseif( WIN64 )
+elseif( WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(OUTBINNAME "csgo_win64")
 elseif( OSX32 )
     set(OUTBINNAME "csgo_osx")

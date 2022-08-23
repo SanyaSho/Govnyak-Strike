@@ -5,7 +5,7 @@
 
 
 # UI Options
-option(USE_ROCKETUI "Use New Open Source Kisak-Strike RmlUI" ON)
+option(USE_ROCKETUI "Use New Open Source Kisak-Strike RmlUI" OFF)
 option(USE_SCALEFORM "Use In-Complete Proprietary Flash UI with blob ( Not Recommended )" OFF)
 # There is also a 3rd option, which is nothing. Nothing will enable base VGUI UI which is also incomplete.
 

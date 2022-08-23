@@ -45,7 +45,7 @@ TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/gcsdk_gcmessages.proto "${
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/gcsystemmsgs.proto "${GENERATED_PROTO_DIR}")
 
 #force include
-if( WINDOWS OR POSIX )
+if( WIN32 OR POSIX )
     target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/tier0/platform.h")
 endif()
 
@@ -366,7 +366,7 @@ endif()
 
 
 target_link_libraries(${OUTBINNAME} meshutils_client)
-if( WINDOWS OR POSIX )
+if( WIN32 OR POSIX )
     target_link_libraries(${OUTBINNAME} jpeglib_client)
     target_link_libraries(${OUTBINNAME} vpklib_client)
 endif()
@@ -375,8 +375,5 @@ if( USE_ROCKETUI )
     target_link_libraries(${OUTBINNAME} RmlCore)
 endif()
 target_link_libraries(${OUTBINNAME} matsys_controls_client)
-target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so) #proprietary steam api
 target_link_libraries(${OUTBINNAME} kisak_gcsdk_client)
-target_link_libraries(${OUTBINNAME} tier2_client tier3_client vgui_controls_client vtf_client bzip2_client libvstdlib_client dmxloader_client bitmap_client mathlib_client tier2_client )
-#target_link_libraries(${OUTBINNAME} protobuf )
-
+target_link_libraries(${OUTBINNAME} tier2_client tier3_client vgui_controls_client vtf_client bzip2_client vstdlib_client dmxloader_client bitmap_client mathlib_client tier2_client )
