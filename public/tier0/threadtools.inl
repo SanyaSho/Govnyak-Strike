@@ -5,6 +5,10 @@
 //
 // Do not #include other files here
 
+#if _MSC_VER >= 1900 // vs 2015 or higher
+#include <memory> // auto_ptr is deprecated
+#endif
+
 #ifndef _PS3
 // this is defined in the .cpp for the PS3 to avoid introducing a dependency for files including the header
 CTHREADLOCALPTR(CThread) g_pCurThread;
