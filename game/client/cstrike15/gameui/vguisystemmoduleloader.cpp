@@ -130,7 +130,7 @@ bool CVGuiSystemModuleLoader::LoadPlatformModules(CreateInterfaceFn *factorylist
 {
 #ifdef DEDICATED
 	return false;
-#endif
+#else
 
 	if ( IsGameConsole() )
 	{
@@ -182,7 +182,7 @@ bool CVGuiSystemModuleLoader::LoadPlatformModules(CreateInterfaceFn *factorylist
 		CSysModule *mod = g_pFullFileSystem->LoadModule(dllPath, "EXECUTABLE_PATH");
 		if (!mod)
 		{
-			Error("Platform Error: bad module '%s', not loading\n", it->GetString("dll"));
+			Warning("Platform Error: bad module '%s', not loading\n", it->GetString("dll"));
 			bSuccess = false;
 			continue;
 		}
@@ -205,6 +205,7 @@ bool CVGuiSystemModuleLoader::LoadPlatformModules(CreateInterfaceFn *factorylist
 
 	m_pPlatformModuleData = kv;
 	return InitializeAllModules(factorylist, factorycount) && bSuccess;
+#endif
 }
 
 //-----------------------------------------------------------------------------
