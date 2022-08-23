@@ -933,7 +933,7 @@ void CGameUI::OnLevelLoadingFinished(bool bError, const char *failureReason, con
 {
 	StopProgressBar( bError, failureReason, extendedReason );
 
-#if defined( WIN32 ) 
+#if defined( WIN32 ) && defined(INCLUDE_SCALEFORM)
 	if ( g_pScaleformUI && !devCheatSkipInputLocking.GetBool() )
 	{
 		if( g_pInputSystem->GetCurrentInputDevice( ) == INPUT_DEVICE_NONE )
