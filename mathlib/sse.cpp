@@ -87,8 +87,7 @@ const __m128  f05 = _mm_set_ss(0.5f);  // 0.5 as SSE value
 
 float _SSE_RSqrtAccurate(float a)
 {
-
-#ifdef _WIN32
+#if defined( _WIN32 ) && !defined( _WIN64 )
 	float x;
 	float half = 0.5f;
 	float three = 3.f;
@@ -110,6 +109,9 @@ float _SSE_RSqrtAccurate(float a)
 	}
 
 	return x;
+#elif _WIN64
+	// Inline assembly isn't allowed in 64-bit MSVC. Sadness.
+	return FastRSqrt(a);
 #elif POSIX
 	__m128  xx = _mm_load_ss( &a );
 	__m128  xr = _mm_rsqrt_ss( xx );
