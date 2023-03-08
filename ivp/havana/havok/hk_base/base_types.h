@@ -109,7 +109,7 @@ typedef hk_uint32	hk_id;
 #endif
 #define HK_TEMPLATE_INLINE inline
 
-#if defined(__i386__) || defined(WIN32)
+#if defined(__i386__) || defined(WIN32) && !defined(_WIN64)
 #	define HK_HAVE_QUERY_PERFORMANCE_TIMER
 #endif
 

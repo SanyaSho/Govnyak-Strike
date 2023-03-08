@@ -16,6 +16,10 @@ if( LINUXALL )
     add_definitions(-D_LIB -DLINUX)
 endif()
 
+if(MSVC)
+	add_definitions(-D_ALLOW_KEYWORD_MACROS)
+endif()
+
 target_sources(${OUTLIBNAME} PRIVATE array/array.cpp)
 target_sources(${OUTLIBNAME} PRIVATE hash/hash.cpp)
 target_sources(${OUTLIBNAME} PRIVATE id_server/id_server.cpp)

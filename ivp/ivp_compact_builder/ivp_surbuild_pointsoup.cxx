@@ -669,7 +669,7 @@ IVP_Compact_Ledge *IVP_SurfaceBuilder_Pointsoup::convert_pointsoup_to_compact_le
   * FPU mode
   ************************************************/
   //doesnt work with threads !!
-#ifdef WIN32
+#if defined(WIN32) && !defined(_WIN64)
   WORD tmpflag;
   __asm FSTCW tmpflag;
 
@@ -684,7 +684,7 @@ IVP_Compact_Ledge *IVP_SurfaceBuilder_Pointsoup::convert_pointsoup_to_compact_le
     } else { // use QHULL to convert pointsoup
 	return IVP_SurfaceBuilder_Pointsoup::convert_pointsoup_to_compact_ledge_internal(points);
     }
-#ifdef WIN32
+#if defined(WIN32) && !defined(_WIN64)
   __asm FLDCW tmpflag;
 #endif
 }
