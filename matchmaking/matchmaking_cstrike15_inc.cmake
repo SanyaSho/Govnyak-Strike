@@ -19,7 +19,7 @@ endif()
 #####matchmaking_inc.vpc#####
 target_include_directories(${OUTBINNAME} PRIVATE ${SRCDIR}/gcsdk/steamextra)
 target_include_directories(${OUTBINNAME} PRIVATE ${SRCDIR}/common)
-target_include_directories(${OUTBINNAME} PRIVATE ${SRCDIR}/thirdparty/protobuf-2.5.0/src)
+target_include_directories(${OUTBINNAME} PRIVATE ${SRCDIR}/thirdparty/protobuf-3.5.1/src)
 target_include_directories(${OUTBINNAME} PRIVATE ${SRCDIR}/common/xlast_${GAMENAME})
 target_compile_definitions(${OUTBINNAME} PRIVATE -DNO_STRING_T -DVECTOR -DVERSION_SAFE_STEAM_API_INTERFACES -DPROTECTED_THINGS_ENABLE -DNO_STEAM_GAMECOORDINATOR)
 
