@@ -13,6 +13,13 @@ SET(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 if (NOT MSVC)
 	add_definitions(-fpic)
 else()
+	add_definitions(-DCOMPILER_MSVC)
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+	add_definitions(-DPLATFORM_64BITS -DCOMPILER_MSVC64)
+else()
+	add_definitions(-DCOMPILER_MSVC32)
+endif()
+
 	# @ssrobins at gitlab.kitware.com
     add_compile_options(
         $<$<CONFIG:>:/MT> #---------|

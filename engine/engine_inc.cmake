@@ -46,7 +46,7 @@ if( WIN32 )
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		target_link_libraries(${OUTBINNAME} ${SRCDIR}/thirdparty/dxsdk/lib/x64/Dsound.lib ${SRCDIR}/thirdparty/dxsdk/lib/x64/dxguid.lib)
 	else()
-		target_link_libraries(${OUTBINNAME} ${SRCDIR}/thirdparty/dxsdk/lib/x86/Dsound.lib ${SRCDIR}/thirdparty/dxsdk/lib/x64/dxguid.lib)
+		target_link_libraries(${OUTBINNAME} ${SRCDIR}/thirdparty/dxsdk/lib/x86/Dsound.lib ${SRCDIR}/thirdparty/dxsdk/lib/x86/dxguid.lib)
 	endif()
     #		$AdditionalDependencies			"$BASE dinput8.lib winmm.lib wsock32.lib ws2_32.lib wininet.lib vfw32.lib Rpcrt4.lib Iphlpapi.lib imm32.lib" [$WINDOWS]
     #		$AdditionalLibraryDirectories	"$BASE;${SRCDIR}\lib\common\vc7;${SRCDIR}\dx9sdk\lib" [$WINDOWS]
