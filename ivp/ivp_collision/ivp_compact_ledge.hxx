@@ -253,7 +253,7 @@ const IVP_Compact_Triangle *IVP_Compact_Edge::get_triangle() const
 {
     // mask 4 lowest adress bits to receive triangle
     //lwss - x64 fixes ( original is x86 )
-#if defined(__i386__)
+#if defined(__i386__) || defined(_M_IX86)
     return (IVP_Compact_Triangle *)(((unsigned int)this) & 0xfffffff0);
 #elif defined(__x86_64__) || defined(_M_X64) || defined(__e2k__)
     return (IVP_Compact_Triangle *)(((unsigned long int)this) & 0xFFFFFFFFFFFFFFF0);
