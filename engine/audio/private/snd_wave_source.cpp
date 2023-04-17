@@ -2700,7 +2700,7 @@ bool CAudioSourceCache::Init( unsigned int memSize )
 
 	Q_FixSlashes( szDLCPath );
 #if defined( WIN32 )
-	Q_strlower( fullpath );
+	Q_strlower( szDLCPath );
 #endif
 
 	m_szMODPath = szDLCPath;
