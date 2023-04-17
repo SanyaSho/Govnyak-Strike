@@ -360,7 +360,7 @@ void CCStrike15BasePanel::FireGameEvent( IGameEvent *event )
 CON_COMMAND_F( cl_avatar_convert_rgb, "Converts all png avatars in the avatars directory to rgb", FCVAR_RELEASE | FCVAR_CHEAT )
 {
 	FileFindHandle_t hFind = NULL;
-	for ( char const *szFileName = g_pFullFileSystem->FindFirst( "avatars/*.png", &hFind );
+	for ( char const *szFileName = g_pFullFileSystem->FindFirst( "avatars/*.png", &hFind ); // */
 		szFileName && *szFileName; szFileName = g_pFullFileSystem->FindNext( hFind ) )
 	{
 		CFmtStr sFile( "avatars/%s", szFileName );
