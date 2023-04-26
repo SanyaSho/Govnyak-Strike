@@ -356,30 +356,30 @@ inline void GOOGLE_UNALIGNED_STORE64(void *p, uint64 v) {
 
 // The following guarantees declaration of the byte swap functions.
 #ifdef _MSC_VER
-#define bswap_16(x) _byteswap_ushort(x)
-#define bswap_32(x) _byteswap_ulong(x)
-#define bswap_64(x) _byteswap_uint64(x)
+#define g_bswap_16(x) _byteswap_ushort(x)
+#define g_bswap_32(x) _byteswap_ulong(x)
+#define g_bswap_64(x) _byteswap_uint64(x)
 
 #elif defined(__APPLE__)
 // Mac OS X / Darwin features
-#define bswap_16(x) OSSwapInt16(x)
-#define bswap_32(x) OSSwapInt32(x)
-#define bswap_64(x) OSSwapInt64(x)
+#define g_bswap_16(x) OSSwapInt16(x)
+#define g_bswap_32(x) OSSwapInt32(x)
+#define g_bswap_64(x) OSSwapInt64(x)
 
 #elif !defined(__GLIBC__) && !defined(__CYGWIN__)
 
-static inline uint16 bswap_16(uint16 x) {
+static inline uint16 g_bswap_16(uint16 x) {
   return static_cast<uint16>(((x & 0xFF) << 8) | ((x & 0xFF00) >> 8));
 }
-#define bswap_16(x) bswap_16(x)
-static inline uint32 bswap_32(uint32 x) {
+#define g_bswap_16(x) g_bswap_16(x)
+static inline uint32 g_bswap_32(uint32 x) {
   return (((x & 0xFF) << 24) |
           ((x & 0xFF00) << 8) |
           ((x & 0xFF0000) >> 8) |
           ((x & 0xFF000000) >> 24));
 }
-#define bswap_32(x) bswap_32(x)
-static inline uint64 bswap_64(uint64 x) {
+#define g_bswap_32(x) g_bswap_32(x)
+static inline uint64 g_bswap_64(uint64 x) {
   return (((x & GOOGLE_ULONGLONG(0xFF)) << 56) |
           ((x & GOOGLE_ULONGLONG(0xFF00)) << 40) |
           ((x & GOOGLE_ULONGLONG(0xFF0000)) << 24) |
@@ -389,7 +389,7 @@ static inline uint64 bswap_64(uint64 x) {
           ((x & GOOGLE_ULONGLONG(0xFF000000000000)) >> 40) |
           ((x & GOOGLE_ULONGLONG(0xFF00000000000000)) >> 56));
 }
-#define bswap_64(x) bswap_64(x)
+#define g_bswap_64(x) g_bswap_64(x)
 
 #endif
 
@@ -461,14 +461,14 @@ class BigEndian {
  public:
 #ifdef PROTOBUF_LITTLE_ENDIAN
 
-  static uint16 FromHost16(uint16 x) { return bswap_16(x); }
-  static uint16 ToHost16(uint16 x) { return bswap_16(x); }
+  static uint16 FromHost16(uint16 x) { return g_bswap_16(x); }
+  static uint16 ToHost16(uint16 x) { return g_bswap_16(x); }
 
-  static uint32 FromHost32(uint32 x) { return bswap_32(x); }
-  static uint32 ToHost32(uint32 x) { return bswap_32(x); }
+  static uint32 FromHost32(uint32 x) { return g_bswap_32(x); }
+  static uint32 ToHost32(uint32 x) { return g_bswap_32(x); }
 
-  static uint64 FromHost64(uint64 x) { return bswap_64(x); }
-  static uint64 ToHost64(uint64 x) { return bswap_64(x); }
+  static uint64 FromHost64(uint64 x) { return g_bswap_64(x); }
+  static uint64 ToHost64(uint64 x) { return g_bswap_64(x); }
 
   static bool IsLittleEndian() { return true; }
 
