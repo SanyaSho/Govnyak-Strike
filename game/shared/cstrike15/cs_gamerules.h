@@ -82,6 +82,7 @@ extern ConVar mp_defuser_allocation;
 extern ConVar mp_death_drop_gun;
 extern ConVar mp_death_drop_grenade;
 extern ConVar mp_death_drop_defuser;
+extern ConVar mp_hostages_moveable;
 extern ConVar ammo_grenade_limit_total;
 extern ConVar sv_competitive_official_5v5;
 

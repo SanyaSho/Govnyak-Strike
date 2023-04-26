@@ -1750,6 +1750,12 @@ ConVar mp_hostages_takedamage(
 	FCVAR_REPLICATED | FCVAR_RELEASE, 
 	"Whether or not hostages can be hurt." );
 
+ConVar mp_hostages_moveable(
+	"mp_hostages_moveable",
+	"0",
+	FCVAR_REPLICATED | FCVAR_RELEASE,
+	"Whether or not hostages can move.");
+
 ConVar mp_hostages_rescuetowin( 
 	"mp_hostages_rescuetowin", 
 	"1", 

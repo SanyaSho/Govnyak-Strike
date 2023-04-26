@@ -15727,7 +15727,7 @@ bool CCSPlayer::TakeControlOfBot( CCSBot *pBot, bool bSkipTeamCheck )
 			}
 		}
 
-		if ( HOSTAGE_RULE_CAN_PICKUP && pBot->m_hCarriedHostageProp != NULL )
+		if (!mp_hostages_moveable.GetBool() && pBot->m_hCarriedHostageProp != NULL )
 		{
 			// transfer any carried hostages and refresh the viewmodel
 			CHostageCarriableProp *pHostageProp = static_cast< CHostageCarriableProp* >( pBot->m_hCarriedHostageProp.Get() );
