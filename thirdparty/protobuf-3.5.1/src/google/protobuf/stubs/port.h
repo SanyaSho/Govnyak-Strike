@@ -391,6 +391,12 @@ static inline uint64 g_bswap_64(uint64 x) {
 }
 #define g_bswap_64(x) g_bswap_64(x)
 
+#else
+
+#define g_bswap_16( x ) bswap_16( x )
+#define g_bswap_32( x ) bswap_32( x )
+#define g_bswap_64( x ) bswap_64( x )
+
 #endif
 
 // ===================================================================
