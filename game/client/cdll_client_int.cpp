@@ -218,8 +218,6 @@ extern void ProcessPortalTeleportations( void );
 #include "irendertorthelperobject.h"
 #include "iloadingdisc.h"
 
-#include "bannedwords.h"
-
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -1713,16 +1711,6 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CGlobalVarsBase *pGloba
 	// Load the game types.
 	g_pGameTypes->Initialize();
 #endif
-
-	//
-	// Censoring banlist loads here
-	//
-	bool bLoadBannedWords = !!CommandLine()->FindParm( "-perfectworld" );
-	bLoadBannedWords |= !!CommandLine()->FindParm( "-usebanlist" );
-	if ( bLoadBannedWords )
-	{
-		g_BannedWords.InitFromFile( "banlist.res" );
-	}
 
 	COM_TimestampedLog( "ClientDLL Init - Finish" );
 	return true;

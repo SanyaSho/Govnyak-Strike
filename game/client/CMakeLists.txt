@@ -57,7 +57,6 @@ endif()
 
 
 target_sources(${OUTBINNAME} PRIVATE "c_team_objectiveresource.cpp")
-target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/bannedwords.cpp")
 target_sources(${OUTBINNAME} PRIVATE "hud_voicestatus.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/predicted_viewmodel.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/cstrike15/player_pickup.cpp")
