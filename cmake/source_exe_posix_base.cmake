@@ -16,6 +16,11 @@ endif()
 
 add_executable(${OUTBINNAME})
 
+# Use more than 2 gigabytes of memory on windows
+if(MSVC)
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LARGEADDRESSAWARE")
+endif()
+
 if(WIN32)
 	set_target_properties(${OUTBINNAME} PROPERTIES OUTPUT_NAME "${OUTBINNAME}.exe")
 else()
