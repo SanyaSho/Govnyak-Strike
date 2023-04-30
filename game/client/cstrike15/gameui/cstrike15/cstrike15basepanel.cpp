@@ -155,11 +155,7 @@ CCStrike15BasePanel::~CCStrike15BasePanel()
 	StopListeningForAllEvents();
 
 	// [jason] Release any screens that may still be active on shutdown so we don't leak memory
-#if defined(INCLUDE_SCALEFORM)
 	DismissAllMainMenuScreens();
-#elif defined(INCLUDE_ROCKETUI)
-	DismissAllMainMenuScreens();
-#endif
 }
 
 #if defined( _X360 )

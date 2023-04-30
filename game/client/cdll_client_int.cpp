@@ -4216,7 +4216,7 @@ bool CHLClient::IsChatRaised( void )
 
 	return pChat->ChatRaised();
 #else
-	return false;
+		return false;
 #endif
 }
 
