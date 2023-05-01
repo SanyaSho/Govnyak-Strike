@@ -27,15 +27,15 @@ jobs:
         DEBIAN_FRONTEND: "noninteractive"
       run: sudo apt update && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libsdl2-mixer-dev libsdl2-dev libgoogle-perftools-dev libopenal-dev libcurlpp-dev libssl-dev libfontconfig1-dev libcurl4-openssl-dev net-tools wget unzip zip
     - name: Building client...
-      run: mkdir build && cd build && cmake .. -DUSE_KISAK_PHYSICS=1 -DUSE_ROCKETUI=1 && make -j2 && cd ${{ env.GITHUB_WORKSPACE }}
+      run: mkdir build && cd build && cmake .. -DUSE_ROCKETUI=1 && make -j2 && cd ${{ env.GITHUB_WORKSPACE }}
     - name: Preparing additional files...
-      run: git clone https://github.com/SwagSoftware/Kisak-Strike-Files && cp -r Kisak-Strike-Files/* ../game
+      run: git clone --recursive https://github.com/SwagSoftware/Kisak-Strike-Files && cp -r Kisak-Strike-Files/* ../game
     - name: Compressing assets...
-      run: cd .. && zip -9 -r game_client-kphys.zip game && rm -rf game && cd ${{ env.GITHUB_WORKSPACE }}
+      run: cd .. && zip -9 -r game_client.zip game && rm -rf game && cd ${{ env.GITHUB_WORKSPACE }}
     - name: Building dedicated...
-      run: cd build && cmake .. -DUSE_KISAK_PHYSICS=1 -DDEDICATED=1 && make -j2 && cd ${{ env.GITHUB_WORKSPACE }}
+      run: cd build && cmake .. -DDEDICATED=1 && make -j2 && cd ${{ env.GITHUB_WORKSPACE }}
     - name: Compressing assets...
-      run: cd .. && zip -9 -r game_dedicated-kphys.zip game && rm -rf game && cd ${{ env.GITHUB_WORKSPACE }}
+      run: cd .. && zip -9 -r game_dedicated.zip game && rm -rf game && cd ${{ env.GITHUB_WORKSPACE }}
     - name: Create tag version
       if: github.event_name != 'pull_request'
       id: tag_version
@@ -60,8 +60,8 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ../game_client-kphys.zip
-        asset_name: game_client-kphys.zip
+        asset_path: ../game_client.zip
+        asset_name: game_client.zip
         asset_content_type: application/zip
     - name: Publish game dedicated artifact
       if: github.event_name != 'pull_request'
@@ -70,6 +70,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ../game_dedicated-kphys.zip
-        asset_name: game_dedicated-kphys.zip
+        asset_path: ../game_dedicated.zip
+        asset_name: game_dedicated.zip
         asset_content_type: application/zip
