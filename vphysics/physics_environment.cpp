@@ -904,8 +904,8 @@ public:
 
 		//TODO: lwss HACK, trimmed off this speedChange for now, dont really want to edit the ivp
 		//lwss add
-		//IVP_Anomaly_Manager::inter_penetration( mindist, ivp0, ivp1, speedChange );
-		IVP_Anomaly_Manager::inter_penetration( mindist, ivp0, ivp1 );
+		IVP_Anomaly_Manager::inter_penetration( mindist, ivp0, ivp1, speedChange );
+		//IVP_Anomaly_Manager::inter_penetration( mindist, ivp0, ivp1 );
 		//lwss end
 	}
 
@@ -2008,8 +2008,8 @@ void CPhysicsEnvironment::GetAlternateGravity(Vector *pGravityVector) const
 float CPhysicsEnvironment::GetDeltaFrameTime(int maxTicks) const
 {
     // this is fully accurate, the IDA king has spoken.
-    double timeDiff = m_pPhysEnv->time_of_next_psi.get_time() - m_pPhysEnv->current_time.get_time();
-    return float( (float(maxTicks) * m_pPhysEnv->delta_PSI_time) + timeDiff );
+    double timeDiff = m_pPhysEnv->get_next_PSI_time().get_time() - m_pPhysEnv->get_current_time().get_time();
+    return float( (float(maxTicks) * m_pPhysEnv->get_delta_PSI_time()) + timeDiff );
 }
 
 void CPhysicsEnvironment::ForceObjectsToSleep(IPhysicsObject **pList, int listCount)
