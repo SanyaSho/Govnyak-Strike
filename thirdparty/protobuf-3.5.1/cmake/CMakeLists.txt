@@ -1,5 +1,5 @@
 # Minimum CMake required
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0.2)
 
 #Kisak-strike specific options
 if(UNIX AND NOT APPLE)
@@ -11,6 +11,7 @@ if(UNIX AND NOT APPLE)
   else()
     add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0 -O2 -march=native)
   endif()
+  add_definitions(-fpic)
 endif()
 
 # @ssrobins at gitlab.kitware.com
