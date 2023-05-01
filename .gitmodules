@@ -1,3 +1,6 @@
 [submodule "ivp"]
 	path = ivp
 	url = git@github.com:tyabus/kisak-physics.git
+[submodule "thirdparty/opus"]
+	path = thirdparty/opus
+	url = https://github.com/xiph/opus.git
