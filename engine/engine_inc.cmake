@@ -38,7 +38,7 @@ else()
         add_definitions(-DINCLUDE_ROCKETUI)
     endif()
 endif()
-remove_definitions(-DBASE) #used by cryptopp REEE
+
 add_definitions(-DALLOW_TEXT_MODE=1)
 
 if( WIN32 )
@@ -242,7 +242,6 @@ target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/hltvtest.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/host.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/host_cmd.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/host_listmaps.cpp")
-target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/host_phonehome.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/host_state.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/imagepacker.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${ESRCDIR}/initmathlib.cpp")
