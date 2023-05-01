@@ -2,7 +2,7 @@ include("${CMAKE_MODULE_PATH}/common_functions.cmake")
 
 ########source_lowest_base########
 if(STATIC_LINK)
-    add_definitions(-DBASE -DSTATIC_LINK)
+    add_definitions(-DSTATIC_LINK)
 endif()
 ##################################
 
@@ -41,7 +41,7 @@ endif()
 #$Configuration "Debug"
 if (CMAKE_BUILD_TYPE STREQUAL "DEBUG")
     message(STATUS "Building in Debug mode")
-    add_definitions(-DBASE -DDEBUG -D_DEBUG -DDBGFLAG_ASSERT)
+    add_definitions(-DDEBUG -D_DEBUG -DDBGFLAG_ASSERT)
     if( OSXALL )
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-2 -g2 -Og -march=native")
     elseif( LINUXALL )
@@ -55,7 +55,7 @@ else()
 		add_compile_options("/Zi")
 		add_link_options("/DEBUG:FASTLINK")
 	endif()
-    add_definitions(-DBASE -DNDEBUG)
+    add_definitions(-DNDEBUG)
     if( OSXALL )
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-2 -g2 -O2 -march=native")
     elseif( LINUXALL )
