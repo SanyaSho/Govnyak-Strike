@@ -9,17 +9,12 @@ set( IS_LIB_PROJECT "1")
 
 add_definitions( -DEXENAME=${OUTBINNAME} )
 
-# Sets subsystem to WINDOWS
-if(WIN32)
-	set(CMAKE_WIN32_EXECUTABLE ON)
+if(WIN32 AND MSVC)
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LARGEADDRESSAWARE") # Use more than 2 gigabytes of memory on windows
+	set(CMAKE_WIN32_EXECUTABLE ON) # Sets subsystem to WINDOWS
 endif()
 
 add_executable(${OUTBINNAME})
-
-# Use more than 2 gigabytes of memory on windows
-if(MSVC)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /LARGEADDRESSAWARE")
-endif()
 
 if(WIN32)
 	set_target_properties(${OUTBINNAME} PROPERTIES OUTPUT_NAME "${OUTBINNAME}.exe")

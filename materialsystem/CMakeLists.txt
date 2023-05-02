@@ -33,9 +33,9 @@ add_definitions(-DVERSION_SAFE_STEAM_API_INTERFACES)
 if( GL )
     add_definitions(-DGL_GLEXT_PROTOTYPES -DDX_TO_GL_ABSTRACTION)
 endif()
-if( NOT POSIX )
+#if( NOT POSIX )
     #"$BASE;strncpy=use_Q_strncpy_instead;_snprintf=use_Q_snprintf_instead" [!$POSIX]
-endif()
+#endif()
 add_definitions(-DALLOW_TEXT_MODE=1)
 
 target_sources(${OUTBINNAME} PRIVATE "CColorCorrection.cpp")
