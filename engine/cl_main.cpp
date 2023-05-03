@@ -2985,10 +2985,14 @@ CON_COMMAND_F( cl_showents, "Dump entity list to console.", FCVAR_CHEAT )
 //-----------------------------------------------------------------------------
 bool CL_ShouldLoadBackgroundLevel( const CCommand &args )
 {
+#ifdef PORTAL2
 	// portal2 is not using a background map
 	return false;
+#endif
 
-	if ( CommandLine()->CheckParm( "-nostartupmenu" ) )
+	if ( CommandLine()->CheckParm("-console") )
+		return false;
+	if ( CommandLine()->CheckParm("-nostartupmenu") )
 		return false;
 	if ( CommandLine()->CheckParm("-makereslists") )
 		return false;
